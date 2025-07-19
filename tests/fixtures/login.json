@@ -1,0 +1,8 @@
+{
+    "menssagem_erro": {
+        "email_e_password": "Email e/ou senha inválidos",
+        "email_vazio": "Email é obrigatório",
+        "password_vazio": "Password é obrigatório",
+        "email_invalido": "Please include an '@' in the email address."
+    }
+}
