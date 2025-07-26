@@ -1,0 +1,10 @@
+{
+    "menssagem": {
+        "sucesso": "Cadastro realizado com sucesso",
+        "nome_vazio": "Nome é obrigatório",
+        "email_vazio": "Email é obrigatório",
+        "email_ja_cadastrado": "Este email já está sendo usado",
+        "password_vazio": "Password é obrigatório",
+        "email_invalido": "Please include an '@' in the email address."
+    }
+}

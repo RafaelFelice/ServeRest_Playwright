@@ -17,4 +17,17 @@ async function deleteUsuario(request: APIRequestContext, usuarioId: string) {
     expect(response.ok()).toBeTruthy();
 }
 
-export { postCadastrarUsuario, deleteUsuario };
+async function getUsuarioEmail(request: APIRequestContext, email: string): Promise<string> {
+
+    const response = await request.get(`https://serverest.dev/usuarios?email=${email}`);
+    expect(response.ok(), `Erro ao pegar usuário. Status: ${response.status()}`).toBeTruthy();
+    const responseBody = await response.json();
+    if (responseBody.usuarios && responseBody.usuarios.length > 0) {
+        console.log(`Usuário encontrado com ID: ${responseBody.usuarios[0]._id}`);
+        return responseBody.usuarios[0]._id;
+    }
+    throw new Error(`Nenhum usuário foi encontrado com o email: ${email}`); 
+}
+
+
+export { postCadastrarUsuario, deleteUsuario, getUsuarioEmail };
