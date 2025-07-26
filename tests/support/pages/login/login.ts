@@ -22,13 +22,18 @@ export class LoginPage {
         await this.emailInput.fill(login.email);
         await this.passwordInput.fill(login.password);
 
-        const btnEntrata = this.page.locator('xpath=//button[text()="Entrar"]');
-        await btnEntrata.click();
+        const btnEntrar = this.page.locator('xpath=//button[text()="Entrar"]');
+        await btnEntrar.click();
+    }
 
+    async goCadastrarUsuario() {
+        const linkCadastrese = this.page.locator('xpath=//a[text()="Cadastre-se"]');
+        await linkCadastrese.click();
     }
 
     async verificarMensagemErro(text: string) {
         const target = this.page.locator(`//span[text()="${text}"]`);
         await expect(target).toBeVisible();
     }
+
 }
