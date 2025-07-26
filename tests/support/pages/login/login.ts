@@ -6,12 +6,15 @@ export class LoginPage {
     readonly page: Page;
     readonly emailInput: Locator;
     readonly passwordInput: Locator;
-
+    readonly btnEntrar: Locator;
+    readonly linkCadastrese: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.emailInput = this.page.locator('#email');
         this.passwordInput = this.page.locator('#password');
+        this.btnEntrar = this.page.getByRole('button', { name: 'Entrar' });
+        this.linkCadastrese = this.page.locator('xpath=//a[text()="Cadastre-se"]');
     }
 
     async go(path: string) {
@@ -21,14 +24,11 @@ export class LoginPage {
     async preencherLogin(login: LoginModel) {
         await this.emailInput.fill(login.email);
         await this.passwordInput.fill(login.password);
-
-        const btnEntrar = this.page.locator('xpath=//button[text()="Entrar"]');
-        await btnEntrar.click();
+        await this.btnEntrar.click();
     }
 
     async goCadastrarUsuario() {
-        const linkCadastrese = this.page.locator('xpath=//a[text()="Cadastre-se"]');
-        await linkCadastrese.click();
+        await this.linkCadastrese.click();
     }
 
     async verificarMensagemErro(text: string) {
